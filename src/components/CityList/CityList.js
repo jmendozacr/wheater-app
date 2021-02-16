@@ -1,17 +1,32 @@
 import React from 'react';
+import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
-import CityInfo from '../CityInfo/CityInfo';
-import Wheater from '../Wheater/Wheater';
+import CityInfo from '../CityInfo';
+import Wheater from '../Wheater';
 
 const renderCityAndCountry = cityAndCountry => {
   const { city, country } = cityAndCountry;
 
   return (
-    <li>
-      <CityInfo city={city} country={country} />
-      <Wheater temperature={2} state="fog"/>
+    <li key={city}>
+      <Grid container
+        justify="center"
+        alignItems="center"
+      >
+        <Grid item
+        sm={8}
+        >
+          <CityInfo city={city} country={country} />
+        </Grid>
+
+        <Grid item
+        sm={4}
+        >
+          <Wheater temperature={2} state="fog"/>
+        </Grid>
+      </Grid>
     </li>
-  )
+  );
 }
 
 const CityList = ({ cities }) => {
@@ -21,7 +36,7 @@ const CityList = ({ cities }) => {
         cities.map(cityAndCountry => renderCityAndCountry(cityAndCountry))
       }
     </ul>
-  )
+  );
 }
 
 CityList.propTypes = {
