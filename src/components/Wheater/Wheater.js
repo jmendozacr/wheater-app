@@ -4,6 +4,9 @@ import Typography from '@material-ui/core/Typography';
 import { WiCloud, WiDayCloudy, WiDayFog, WiDaySunny, WiRain } from 'react-icons/wi';
 import { IconContext } from 'react-icons';
 
+// array of valid values to check with proptypes
+const validValues = ["cloud", "cloudy", "fog", "sunny", "rain"];
+
 const stateByName = {
   cloud: WiCloud,
   cloudy: WiDayCloudy,
@@ -31,7 +34,7 @@ const Wheater = ({ temperature, state }) => {
 
 Wheater.propTypes = {
   temperature: PropTypes.number.isRequired,
-  state: PropTypes.string.isRequired
+  state: PropTypes.oneOf(validValues).isRequired,
 }
 
 export default Wheater;
