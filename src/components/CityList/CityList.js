@@ -4,23 +4,25 @@ import PropTypes from 'prop-types';
 import CityInfo from '../CityInfo';
 import Wheater from '../Wheater';
 
-const renderCityAndCountry = cityAndCountry => {
+const renderCityAndCountry = eventOnClickItem => cityAndCountry => {
   const { city, country } = cityAndCountry;
 
   return (
-    <li key={city}>
+    <li key={city} onClick={eventOnClickItem}>
       <Grid container
         justify="center"
         alignItems="center"
       >
         <Grid item
-        sm={8}
+        md={8}
+        xs={12}
         >
           <CityInfo city={city} country={country} />
         </Grid>
 
         <Grid item
-        sm={4}
+        md={4}
+        xs={12}
         >
           <Wheater temperature={2} state="fog"/>
         </Grid>
@@ -29,11 +31,11 @@ const renderCityAndCountry = cityAndCountry => {
   );
 }
 
-const CityList = ({ cities }) => {
+const CityList = ({ cities, onClickCity }) => {
   return (
     <ul>
       {
-        cities.map(cityAndCountry => renderCityAndCountry(cityAndCountry))
+        cities.map(cityAndCountry => renderCityAndCountry(onClickCity)(cityAndCountry))
       }
     </ul>
   );
@@ -41,6 +43,7 @@ const CityList = ({ cities }) => {
 
 CityList.propTypes = {
   cities: PropTypes.array.isRequired,
+  onClickCity: PropTypes.func.isRequired,
 }
 
 export default CityList;
