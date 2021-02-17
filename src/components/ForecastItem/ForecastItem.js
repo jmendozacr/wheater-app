@@ -5,7 +5,6 @@ import Grid from '@material-ui/core/Grid';
 import { IconContext } from 'react-icons';
 import IconState, { validValues } from './../IconState';
 
-
 const ForecastItem = ({ weekday, hour, state, temperature }) => {
     return (
         <Grid container
