@@ -1,0 +1,1 @@
+export { detault } from './ForecastItem';
