@@ -8,7 +8,7 @@ const WheaterDetail = ({ humidity, wind }) => {
             <Typography>Humidity: {humidity}%</Typography>
             <Typography>Wind: {wind} km/h</Typography>
         </>
-    )
+    );
 }
 
 WheaterDetail.propTypes = {
@@ -16,4 +16,4 @@ WheaterDetail.propTypes = {
     wind: PropTypes.number.isRequired,
 }
 
-export default WheaterDetail
+export default WheaterDetail;
