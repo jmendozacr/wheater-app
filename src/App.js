@@ -11,10 +11,11 @@ import NotFoundPage from './pages/NotFoundPage';
 const App = props => {
     return (
         <Grid container justify="center">
-            <Grid item sm={10}>
-                <h1>
-                    App
-                </h1>
+            <Grid item 
+                xs={11}
+                sm={11}
+                md={10}
+                lg={8}>
                 <Router>
                     <Switch>
                         <Route exact path="/">

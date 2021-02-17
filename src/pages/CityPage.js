@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import CityInfo from './../components/CityInfo';
 import Wheater from './../components/Wheater';
@@ -60,23 +60,27 @@ const CityPage = props => {
        forecastItemList = forecastItems;
 
     return (
-        <Grid container justify="center" direction="column">
-            <Grid item xs={12}>
+        <Grid container 
+            justify="space-around"
+            direction="column"
+            spacing={2}>
+            <Grid container item 
+                xs={12}
+                justify="center"
+                alignItems="flex-end">
                 <CityInfo city={city} country={country}/>
             </Grid>
-            <Grid container item xs={12}>
-                <Grid item xs={8}>
-                    <Wheater state={state} temperature={temperature} />
-                </Grid>
-                <Grid item xs={4}>
-                    <WheaterDetail humidity={humidity} wind={wind} />
-                </Grid>
-                <Grid item xs={12}>
-                    <ForecastChart data={data}/>
-                </Grid>
-                <Grid item xs={12}>
-                    <ForeCast forecastItemList={forecastItemList}/>
-                </Grid>
+            <Grid container item 
+                xs={12}
+                justify="center">
+                <Wheater state={state} temperature={temperature} />
+                <WheaterDetail humidity={humidity} wind={wind} />
+            </Grid>
+            <Grid item>
+                <ForecastChart data={data}/>
+            </Grid>
+            <Grid item>
+                <ForeCast forecastItemList={forecastItemList}/>
             </Grid>
         </Grid>
     );
