@@ -10,10 +10,10 @@ import { IconContext } from 'react-icons';
 import { WiDaySunny } from 'react-icons/wi';
 import { Typography } from '@material-ui/core';
 
-const AppFrame = props => {
+const AppFrame = ({ children }) => {
     return (
         <Grid container
-            justify="centerx">
+            justify="center">
             <AppBar position="static">
                 <Toolbar variant="dense">
                     <IconButton color="inherit" aria-label="menu">
@@ -31,19 +31,19 @@ const AppFrame = props => {
                     </Typography>
                 </Toolbar>
             </AppBar>
-            <Grid container item
+            <Grid item
                 xs={12}
                 sm={11}
                 md={10}
                 lg={8}>
-                APP
+                { children }
             </Grid>
         </Grid>
     )
 }
 
 AppFrame.propTypes = {
-
+    children: PropTypes.node,
 }
 
 export default AppFrame;
