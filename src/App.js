@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { BrowserRouter as Router, 
     Switch,
     Route } from 'react-router-dom';
@@ -35,10 +34,6 @@ const App = props => {
             </Grid>
         </Grid>
     );
-}
-
-App.propTypes = {
-
 }
 
 export default App;
