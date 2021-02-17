@@ -3,7 +3,7 @@ import 'typeface-roboto';
 import CityInfo from './CityInfo';
 
 export default {
-  title: "CityInfo",
+  title: "City Info",
   component: CityInfo,
 }
 
