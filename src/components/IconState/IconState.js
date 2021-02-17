@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { WiCloud, WiDayCloudy, WiDayFog, WiDaySunny, WiRain } from 'react-icons/wi';
 
 // array of valid values to check with proptypes
-const validValues = ["cloud", "cloudy", "fog", "sunny", "rain"];
+export const validValues = ["cloud", "cloudy", "fog", "sunny", "rain"];
 
 const stateByName = {
     cloud: WiCloud,
