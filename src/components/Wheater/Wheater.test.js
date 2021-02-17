@@ -5,7 +5,7 @@ import '@testing-library/jest-dom/extend-expect';
 
 // TDD
 test("Wheater render", async () => {
-    const { findByRole } = render(<Wheater temperature={20} state="rain"/>);
+    const { findByRole } = render(<Wheater temperature={20} state="sunny"/>);
 
     const temp = await findByRole("heading");
 

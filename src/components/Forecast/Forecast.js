@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import ForecastItem from '../ForecastItem/ForecastItem';
-import { validValues } from './../ForecastItem';
+import { validValues } from './../IconState';
 
 const renderForecast = forecast => {
     const { weekday, hour, state, temperature } = forecast;
