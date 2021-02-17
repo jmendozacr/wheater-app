@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { BrowserRouter as Router, 
+    Switch,
+    Route } from 'react-router-dom';
+import Grid from '@material-ui/core/Grid';
+import WelcomePage from './pages/WelcomePage';
+import MainPage from './pages/MainPage';
+import CityPage from './pages/CityPage';
+import NotFoundPage from './pages/NotFoundPage';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = props => {
+    return (
+        <Grid container justify="center">
+            <Grid item sm={10}>
+                <h1>
+                    App
+                </h1>
+                <Router>
+                    <Switch>
+                        <Route exact path="/">
+                            <WelcomePage/>
+                        </Route>
+                        <Route path="/main">
+                            <MainPage/>
+                        </Route>
+                        <Route path="/city">
+                            <CityPage/>
+                        </Route>
+                        <Route>
+                            <NotFoundPage/>
+                        </Route>
+                    </Switch>
+                </Router>
+            </Grid>
+        </Grid>
+    );
+}
+
+App.propTypes = {
+
 }
 
 export default App;
