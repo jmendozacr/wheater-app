@@ -15,4 +15,4 @@ const cities = [
 	{ city: "Tokyo", country: "Japon" },
 ];
 
-export const CityListExample = () => <CityList cities={cities} onClickCity={action("Click on city!")}/> 
+export const CityListExample = () => <CityList cities={cities} onClickCity={action("Click on city!")}/>;
