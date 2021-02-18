@@ -4,6 +4,8 @@ import Grid from '@material-ui/core/Grid';
 import { IconContext } from 'react-icons';
 import { WiDaySunny } from 'react-icons/wi';
 import Typography from '@material-ui/core/Typography';
+import Link from '@material-ui/core/Link';
+import { Link as RouterLink } from 'react-router-dom';
 
 const WelcomePage = props => {
     return (
@@ -29,6 +31,12 @@ const WelcomePage = props => {
                                 <Typography variant="h4" color="inherit">
                                     Wheater App
                                 </Typography>
+                                <Link color="inherit"
+                                    aria-label="menu"
+                                    component={RouterLink}
+                                    to="/main">
+                                    Get in
+                                </Link>
                             </Grid>
                     </Grid>
                 </div>
