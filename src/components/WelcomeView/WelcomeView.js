@@ -9,15 +9,11 @@ const WelcomeView = ({ children }) => {
     const [vanta, setVanta] = useState(0);
 
     useEffect(() => {
-        console.log("my ref (useEffect)", myRefDiv.current);
-
         if(!vanta) {
             setVanta(Clouds({
                 THREE,
                 el: myRefDiv.current
             }));
-
-            console.log("different to 0");
         }
 
         return () => {
@@ -28,8 +24,8 @@ const WelcomeView = ({ children }) => {
     }, [vanta]);
 
     return (
-        <div ref={myRefDiv}>
-            WelcomeView
+        <div className="full" ref={myRefDiv}>
+            {children}
         </div>
     );
 }

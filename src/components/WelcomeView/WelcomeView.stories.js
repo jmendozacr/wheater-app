@@ -7,5 +7,7 @@ export default {
 }
 
 export const WelcomeViewExample = () => (
-    <WelcomeView/>
+    <WelcomeView>
+       Content 
+    </WelcomeView>
 );
