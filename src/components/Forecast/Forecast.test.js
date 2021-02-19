@@ -9,7 +9,7 @@ const forecastItems = [
     { hour: 15, state: "snow", weekday: "Thursday", temperature: 3 },
     { hour: 16, state: "drizzle", weekday: "Thursday", temperature: 21 },
     { hour: 17, state: "thunderstorm", weekday: "Thursday", temperature: 14 },
-]
+];
 
 test('should render Forecast', async () => {
     const { findAllByTestId } = render(<Forecast forecastItemList={forecastItems} />);
@@ -17,4 +17,4 @@ test('should render Forecast', async () => {
     const items = await findAllByTestId("forecast-item-container");
 
     expect(items).toHaveLength(6);
-})
+});
