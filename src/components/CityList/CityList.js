@@ -42,11 +42,10 @@ const renderCityAndCountry = eventOnClickItem => (cityAndCountry, wheater) => {
 }
 
 const CityList = ({ cities, onClickCity }) => {
-  const wheater = { temperature: 10, state: "sunny" };
   const [allWheater, setAllWheater] = useState({});
 
   useEffect(() => {
-    const setWheater = (city) => {
+    const setWheater = (city, country) => {
       const appId = "dc2da2d33c522744fa9b2f5a99b74e23";
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${appId}`;
 
@@ -54,23 +53,29 @@ const CityList = ({ cities, onClickCity }) => {
       .then(response => {
         const { data } = response,
           temperature = data.main.temp,
-          state= "rain";
+          state= "rain",
+          propName = `${city}-${country}`, //ex: { San José-Costa Rica }
+          propValue = {temperature, state}; // ex: { temperature: 10, state: "rain" }
 
-          console.log("RESPONSE", temperature);
+        setAllWheater( allWheater => {
+          const result =  { ...allWheater, [propName]: propValue };
+          // console.log("RESULT", result);
+
+          return result;
+        });
       })
     }
 
     cities.forEach(({city, country}) => {
-      setWheater(city);
+      setWheater(city, country);
     });
   }, [cities]);
-
-  console.log("cities", cities);
 
   return (
     <List>
       {
-        cities.map(cityAndCountry => renderCityAndCountry(onClickCity)(cityAndCountry, wheater))
+        cities.map(cityAndCountry => renderCityAndCountry(onClickCity)(cityAndCountry,
+          allWheater[`${cityAndCountry.city}-${cityAndCountry.country}`]))
       }
     </List>
   );
