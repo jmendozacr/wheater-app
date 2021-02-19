@@ -9,8 +9,6 @@ import Wheater from '../Wheater';
 
 const renderCityAndCountry = eventOnClickItem => (cityAndCountry, wheater) => {
   const { city, country } = cityAndCountry;
-  // console.log("wheater", wheater);
-  // const { temperature, state } = wheater;
 
   return (
     <ListItem 
@@ -45,29 +43,28 @@ const CityList = ({ cities, onClickCity }) => {
   const [allWheater, setAllWheater] = useState({});
 
   useEffect(() => {
-    const setWheater = (city, country) => {
+    const setWheater = (city, country, countryCode) => {
       const appId = "dc2da2d33c522744fa9b2f5a99b74e23";
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${appId}`;
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&appid=${appId}`;
 
       axios.get(url)
       .then(response => {
         const { data } = response,
           temperature = data.main.temp,
-          state= "rain",
+          state= "snow",
           propName = `${city}-${country}`, //ex: { San José-Costa Rica }
           propValue = {temperature, state}; // ex: { temperature: 10, state: "rain" }
 
         setAllWheater( allWheater => {
           const result =  { ...allWheater, [propName]: propValue };
-          // console.log("RESULT", result);
 
           return result;
         });
       })
     }
 
-    cities.forEach(({city, country}) => {
-      setWheater(city, country);
+    cities.forEach(({city, country, countryCode}) => {
+      setWheater(city, country, countryCode);
     });
   }, [cities]);
 
@@ -85,7 +82,8 @@ CityList.propTypes = {
   cities: PropTypes.arrayOf(
     PropTypes.shape({
       city: PropTypes.string.isRequired,
-      country: PropTypes.string.isRequired
+      country: PropTypes.string.isRequired,
+      countryCode: PropTypes.string.isRequired,
     })
   ).isRequired,
   onClickCity: PropTypes.func.isRequired,

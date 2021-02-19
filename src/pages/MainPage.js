@@ -5,10 +5,10 @@ import AppFrame from './../components/AppFrame';
 import Paper from '@material-ui/core/Paper';
 
 const cities = [
-	{ city: "San José", country: "Costa Rica" },
-	{ city: "Madrid", country: "España" },
-	{ city: "Granada", country: "Nicaragua" },
-	{ city: "Tokyo", country: "Japon" },
+	{ city: "San José", country: "Costa Rica", countryCode: "CR" },
+	{ city: "Estonia", country: "Estonia", countryCode: "EE" },
+	{ city: "Madrid", country: "España", countryCode: "ES" },
+	{ city: "Tokyo", country: "Japon", countryCode: "JP" },
 ];
 
 const MainPage = () => {

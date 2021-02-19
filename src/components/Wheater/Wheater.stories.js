@@ -7,5 +7,5 @@ export default {
   component: Wheater,
 }
 
-export const WheaterCloudy = () => (<Wheater temperature={23} state="cloudy"></Wheater>);
-export const WheaterSunny = () => (<Wheater temperature={23} state="sunny"></Wheater>);
+export const WheaterCloudy = () => (<Wheater temperature={23} state="clouds"></Wheater>);
+export const WheaterSunny = () => (<Wheater temperature={23} state="snow"></Wheater>);
