@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import Wheater from './Wheater'; // SUT
+import Weather from './Weather'; // SUT
 import '@testing-library/jest-dom/extend-expect';
 
 // TDD
-test("Wheater render", async () => {
-    const { findByRole } = render(<Wheater temperature={20} state="clouds"/>);
+test("Weather render", async () => {
+    const { findByRole } = render(<Weather temperature={20} state="clouds"/>);
 
     const temp = await findByRole("heading");
 

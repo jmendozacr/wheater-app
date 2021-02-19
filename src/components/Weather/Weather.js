@@ -3,9 +3,9 @@ import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import { IconContext } from 'react-icons';
-import IconState, { validValues } from './../IconState';
+import IconState, { validValues } from '../IconState';
 
-const Wheater = ({ temperature, state }) => {
+const Weather = ({ temperature, state }) => {
   return (
     <Grid container item
     direction="row"
@@ -20,9 +20,9 @@ const Wheater = ({ temperature, state }) => {
   );
 }
 
-Wheater.propTypes = {
+Weather.propTypes = {
   temperature: PropTypes.number.isRequired,
   state: PropTypes.oneOf(validValues).isRequired,
 }
 
-export default Wheater;
+export default Weather;

@@ -13,6 +13,6 @@ const forecastItems = [
     { hour: 12, state: "snow", weekday: "Thursday", temperature: 3 },
     { hour: 12, state: "drizzle", weekday: "Thursday", temperature: 21 },
     { hour: 12, state: "thunderstorm", weekday: "Thursday", temperature: 14 },
-]
+];
 
-export const ForecastExample = () => <Forecast forecastItemList={forecastItems} />
+export const ForecastExample = () => <Forecast forecastItemList={forecastItems} />;

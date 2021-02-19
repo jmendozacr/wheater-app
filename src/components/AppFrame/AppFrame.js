@@ -27,7 +27,7 @@ const AppFrame = ({ children }) => {
                         </Link>
                     </IconButton>
                     <Typography variant="h6" color="inherit">
-                        Wheater App
+                        Weather App
                     </Typography>
                 </Toolbar>
             </AppBar>

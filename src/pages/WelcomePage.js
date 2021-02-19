@@ -29,7 +29,7 @@ const WelcomePage = props => {
                                 justify="center"
                                 alignItems="center">
                                 <Typography variant="h4" color="inherit">
-                                    Wheater App
+                                    Weather App
                                 </Typography>
                                 <Link color="inherit"
                                     aria-label="menu"

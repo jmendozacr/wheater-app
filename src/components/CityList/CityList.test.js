@@ -10,9 +10,7 @@ const cities = [
 ];
 
 test("CityList renders", async () => {
-	const fnClickOnItem = jest.fn();
-
-	const { findAllByRole } = render(<CityList cities={cities} onClickCity={fnClickOnItem}/>);
+	const { findAllByRole } = render(<CityList cities={cities} onClickCity={() => {}}/>);
 
     const items = await findAllByRole("button");
 
