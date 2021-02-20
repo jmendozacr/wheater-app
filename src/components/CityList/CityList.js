@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import convertUnits from 'convert-units';
 import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -50,7 +51,7 @@ const CityList = ({ cities, onClickCity }) => {
       axios.get(url)
       .then(response => {
         const { data } = response,
-          temperature = data.main.temp,
+          temperature = Number(convertUnits(data.main.temp).from("K").to("C").toFixed(0)),
           state = data.weather[0].main.toLowerCase(),
           propName = `${city}-${country}`, //ex: { San José-Costa Rica }
           propValue = {temperature, state}; // ex: { temperature: 10, state: "rain" }

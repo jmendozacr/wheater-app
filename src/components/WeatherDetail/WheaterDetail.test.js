@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import WeatherDetail from './WeatherDetail'; // SUT
+import WeatherDetail from './WheaterDetail'; // SUT
 
 test('should render weather detail component', async () => {
     const { findByText } = render(<WeatherDetail humidity={12} wind={78}/>);
