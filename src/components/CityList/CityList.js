@@ -56,6 +56,17 @@ const CityList = ({ cities, onClickCity }) => {
 
         setAllWeather( allWeather => ({...allWeather, [propName]: propValue }));
       })
+      .catch(error => {
+        if (error.response) {
+          const { data, status } = error.response;
+          console.log("data", data);
+          console.log("status", status);
+        } else if (error.request) {
+          console.log("Server inaccessible or there is no internet.");
+        } else {
+          console.log("unforeseen errors.");
+        }
+      });
     }
 
     cities.forEach(({city, country, countryCode}) => {
