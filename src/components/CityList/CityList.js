@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import convertUnits from 'convert-units';
+import Alert from '@material-ui/lab/Alert';
 import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -38,35 +39,31 @@ const renderCityAndCountry = eventOnClickItem => (cityAndCountry, weather) => {
 
 const CityList = ({ cities, onClickCity }) => {
   const [allWeather, setAllWeather] = useState({});
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const setWeather = (city, country, countryCode) => {
+    const setWeather = async (city, country, countryCode) => {
       const appId = "dc2da2d33c522744fa9b2f5a99b74e23";
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&appid=${appId}`;
 
-      axios.get(url)
-      .then(response => {
+      try {
+        const response = await axios.get(url);
         const { data } = response,
-          temperature = Number(convertUnits(data.main.temp).from("K").to("C").toFixed(0)),
-          state = data.weather[0].main.toLowerCase(),
-          propName = `${city}-${country}`, //ex: { San José-Costa Rica }
-          propValue = {temperature, state}; // ex: { temperature: 10, state: "rain" }
-
-          console.log("STATE", propValue);
+                temperature = Number(convertUnits(data.main.temp).from("K").to("C").toFixed(0)),
+                state = data.weather[0].main.toLowerCase(),
+                propName = `${city}-${country}`, //ex: { San José-Costa Rica }
+                propValue = {temperature, state}; // ex: { temperature: 10, state: "rain" }
 
         setAllWeather( allWeather => ({...allWeather, [propName]: propValue }));
-      })
-      .catch(error => {
+      } catch (error) {
         if (error.response) {
-          const { data, status } = error.response;
-          console.log("data", data);
-          console.log("status", status);
+          setError("There is an error with the server.");
         } else if (error.request) {
-          console.log("Server inaccessible or there is no internet.");
+          setError("Check the internet connection.");
         } else {
-          console.log("unforeseen errors.");
+          setError("Error loading data.");
         }
-      });
+      }
     }
 
     cities.forEach(({city, country, countryCode}) => {
@@ -75,12 +72,17 @@ const CityList = ({ cities, onClickCity }) => {
   }, [cities]);
 
   return (
-    <List>
+    <div>
       {
-        cities.map(cityAndCountry => renderCityAndCountry(onClickCity)(cityAndCountry,
-          allWeather[`${cityAndCountry.city}-${cityAndCountry.country}`]))
+        error && <Alert onClose={() => setError(null)} severity="error">{error}</Alert>
       }
-    </List>
+      <List>
+        {
+          cities.map(cityAndCountry => renderCityAndCountry(onClickCity)(cityAndCountry,
+            allWeather[`${cityAndCountry.city}-${cityAndCountry.country}`]))
+        }
+      </List>
+    </div>
   );
 }
 
