@@ -89,9 +89,9 @@ const renderCityAndCountry = eventOnClickItem => (cityAndCountry, weather) => {
 CityList.propTypes = {
     cities: PropTypes.arrayOf(
         PropTypes.shape({
-        city: PropTypes.string.isRequired,
-        country: PropTypes.string.isRequired,
-        countryCode: PropTypes.string.isRequired,
+            city: PropTypes.string.isRequired,
+            country: PropTypes.string.isRequired,
+            countryCode: PropTypes.string.isRequired,
         })
     ).isRequired,
     onClickCity: PropTypes.func.isRequired,
