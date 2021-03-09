@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Grid from '@material-ui/core/Grid';
+import moment from 'moment';
 import CityInfo from './../components/CityInfo';
 import Weather from './../components/Weather';
 import WeatherDetail from './../components/WeatherDetail';
@@ -69,9 +70,19 @@ const CityPage = () => {
             const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city},${countryCode}&appid=${id}`;
             try {
                 const { data } = await axios.get(url);
-                console.log("data", data);
+                const daysAhead = [0, 1, 2, 3, 4, 5];
+                const days = daysAhead.map(d => moment().add(d, "d"));
+                const dataAux = days.map(d => {
+                    return({
+                        dayHour: d.format("ddd"),
+                        min: 14,
+                        max: 22, 
+                    });
+                });
 
-                setData(dataExample);
+                console.log("dataAux", dataAux);
+
+                setData(dataAux);
                 setForecastItemList(forecastItems);
             } catch (error) {
                 console.log(error);
