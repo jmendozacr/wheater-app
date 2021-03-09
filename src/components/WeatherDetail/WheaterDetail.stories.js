@@ -1,9 +1,9 @@
 import React from 'react';
-import WeatherDetail from './WeatherDetail';
+import WheaterDetail from './WheaterDetail';
 
 export default {
     title: "Weather Detail",
-    component: WeatherDetail
+    component: WheaterDetail
 }
 
-export const WeatherDetailExample = () => (<WeatherDetail humidity={12} wind={78}/>)
+export const WheaterDetailExample = () => (<WheaterDetail humidity={12} wind={78}/>)
