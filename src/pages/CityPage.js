@@ -1,4 +1,5 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import CityInfo from './../components/CityInfo';
 import Weather from './../components/Weather';
@@ -50,6 +51,9 @@ const forecastItems = [
 ];
 
 const CityPage = () => {
+    const params = useParams();
+    console.log("params", params);
+
     const city = "San José",
        country = "Costa Rica",
        state   = "snow",
