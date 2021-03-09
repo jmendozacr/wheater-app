@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
 import Grid from '@material-ui/core/Grid';
 import CityInfo from './../components/CityInfo';
 import Weather from './../components/Weather';
@@ -51,25 +52,34 @@ const forecastItems = [
 ];
 
 const CityPage = () => {
-    const params = useParams();
+    const { city, countryCode } = useParams();
     const [data, setData] = useState(null);
     const [forecastItemList, setForecastItemList] = useState(null);
 
-    const city = "San José",
-       country = "Costa Rica",
+    const country = "Costa Rica",
        state   = "snow",
        temperature = 23,
        humidity = 80,
        wind    = 20;
-    //    data    = dataExample,
-    //    forecastItemList = forecastItems;
 
     useEffect(() => {
-        setData(dataExample);
-        setForecastItemList(forecastItems)
-    }, []);
 
-    console.log("data", data);
+        const getForecast = async () => {
+            const id = "dc2da2d33c522744fa9b2f5a99b74e23";
+            const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city},${countryCode}&appid=${id}`;
+            try {
+                const { data } = await axios.get(url);
+                console.log("data", data);
+
+                setData(dataExample);
+                setForecastItemList(forecastItems);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        getForecast();
+    }, [city, countryCode]);
 
     return (
         <AppFrame>
