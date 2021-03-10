@@ -5,7 +5,6 @@ import * as THREE from 'three';
 
 const WelcomeView = ({ children }) => {
     const myRefDiv = useRef(null);
-    console.log("my ref", myRefDiv.current);
     const [vanta, setVanta] = useState(0);
 
     useEffect(() => {
