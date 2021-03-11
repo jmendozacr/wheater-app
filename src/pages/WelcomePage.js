@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import { Link as RouterLink } from 'react-router-dom';
 
-const WelcomePage = props => {
+const WelcomePage = () => {
     return (
         <WelcomeView>
             <Grid container

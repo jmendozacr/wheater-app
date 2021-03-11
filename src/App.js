@@ -7,7 +7,7 @@ import MainPage from './pages/MainPage';
 import CityPage from './pages/CityPage';
 import NotFoundPage from './pages/NotFoundPage';
 
-const App = props => {
+const App = () => {
     return (
         <Router>
             <Switch>

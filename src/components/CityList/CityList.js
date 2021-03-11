@@ -9,7 +9,8 @@ import CityInfo from '../CityInfo';
 import Weather from '../Weather';
 import { getCityCode } from './../../utils/utils';
 
-const renderCityAndCountry = eventOnClickItem => (cityAndCountry, weather) => {
+// eslint-disable-next-line react/display-name
+export const renderCityAndCountry = eventOnClickItem => (cityAndCountry, weather) => {
     const { city, countryCode, country } = cityAndCountry;
 
     return (
