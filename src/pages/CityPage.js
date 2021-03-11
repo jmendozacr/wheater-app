@@ -11,16 +11,10 @@ import ForecastChart from './../components/ForecastChart';
 import ForeCast from './../components/Forecast';
 import AppFrame from './../components/AppFrame';
 
-const CityPage = () => {
+const useCityPage = () => {
     const { city, countryCode } = useParams();
-    const [data, setData] = useState(null);
+    const [chartData, setChartData] = useState(null);
     const [forecastItemList, setForecastItemList] = useState(null);
-
-    const country = "Costa Rica",
-       state   = "snow",
-       temperature = 23,
-       humidity = 80,
-       wind    = 20;
 
     useEffect(() => {
         const getForecast = async () => {
@@ -50,7 +44,7 @@ const CityPage = () => {
                     });
                 });
 
-                setData(dataAux);
+                setChartData(dataAux);
 
                 const interval = [4, 8, 12, 16, 20, 24];
                 const forecastItemListAux = data.list
@@ -73,6 +67,18 @@ const CityPage = () => {
         getForecast();
     }, [city, countryCode]);
 
+    return { city, chartData, forecastItemList }
+}
+
+const CityPage = () => {
+    const { city, chartData, forecastItemList } = useCityPage()
+
+    const country = "Costa Rica",
+       state   = "snow",
+       temperature = 23,
+       humidity = 80,
+       wind    = 20;
+
     return (
         <AppFrame>
             <Grid container 
@@ -93,7 +99,7 @@ const CityPage = () => {
                 </Grid>
                 <Grid item>
                     {
-                        data && <ForecastChart data={data}/>
+                        chartData && <ForecastChart data={chartData}/>
                     }
                 </Grid>
                 <Grid item>
