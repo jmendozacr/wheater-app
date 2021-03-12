@@ -1,8 +1,9 @@
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment';
-import convertUnits from 'convert-units';
-import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { getForecastUrl } from './../utils/url';
+import { toCelsius } from './../utils/utils';
 
 const useCityPage = () => {
     const { city, countryCode } = useParams();
@@ -11,9 +12,7 @@ const useCityPage = () => {
 
     useEffect(() => {
         const getForecast = async () => {
-            const id = "dc2da2d33c522744fa9b2f5a99b74e23";
-            const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city},${countryCode}&appid=${id}`;
-            const toCelsius = (temp) => Number(convertUnits(temp).from("K").to("C").toFixed(0));
+            const url = getForecastUrl({ city, countryCode });
 
             try {
                 const { data } = await axios.get(url);
