@@ -35,14 +35,14 @@ const useCityPage = () => {
                     });
 
                     const temps = tempObjArray.map(item => item.main.temp);
-                    const fallbackTemp = temps.length ? temps : [290];
 
                     return({
                         dayHour: day.format("ddd"),
-                        min: toCelsius(Math.min(...fallbackTemp)),
-                        max: toCelsius(Math.max(...fallbackTemp)), 
+                        min: toCelsius(Math.min(...temps)),
+                        max: toCelsius(Math.max(...temps)),
+                        hasTemp: ( temps.length > 0 ? true : false ), 
                     });
-                });
+                }).filter(item => item.hasTemp);
 
                 setChartData(dataAux);
 
