@@ -6,3 +6,7 @@ const cities = [
 ];
 
 export const getServiceCities = () => (cities);
+
+export const getCountryNameByCountryCode = (code) => (
+	cities.filter(city => city.countryCode === code)[0].country
+);
