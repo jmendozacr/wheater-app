@@ -28,7 +28,7 @@ const MainPage = ({ onSetAllWeather, allWeather }) => {
 }
 
 MainPage.propTypes = {
-    allWeather: PropTypes.func,
+    allWeather: PropTypes.object,
     onSetAllWeather: PropTypes.func,
 }
 

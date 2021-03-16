@@ -63,7 +63,7 @@ CityList.propTypes = {
         })
     ).isRequired,
     onClickCity: PropTypes.func.isRequired,
-    allWeather: PropTypes.func,
+    allWeather: PropTypes.object,
     onSetAllWeather: PropTypes.func,
 }
 

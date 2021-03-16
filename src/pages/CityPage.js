@@ -67,7 +67,7 @@ const CityPage = ({ allWeather, onSetAllWeather }) => {
 }
 
 CityPage.propTypes = {
-    allWeather: PropTypes.func,
+    allWeather: PropTypes.object,
     onSetAllWeather: PropTypes.func,
 }
 
