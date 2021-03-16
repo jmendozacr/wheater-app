@@ -37,8 +37,8 @@ export const renderCityAndCountry = eventOnClickItem => (cityAndCountry, weather
     );
 }
 
-const CityList = ({ cities, onClickCity }) => {
-    const { allWeather, error, setError } = useCityList(cities);
+const CityList = ({ cities, onClickCity, onSetAllWeather, allWeather }) => {
+    const { error, setError } = useCityList(cities, onSetAllWeather);
 
     return (
         <div>
@@ -63,6 +63,8 @@ CityList.propTypes = {
         })
     ).isRequired,
     onClickCity: PropTypes.func.isRequired,
+    allWeather: PropTypes.func,
+    onSetAllWeather: PropTypes.func,
 }
 
 export default CityList;

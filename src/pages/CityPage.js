@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import { LinearProgress } from '@material-ui/core';
 import CityInfo from './../components/CityInfo';
@@ -12,11 +13,11 @@ import useCityList from '../hooks/useCityList';
 import { getCityCode } from '../utils/utils';
 import { getCountryNameByCountryCode } from '../utils/serviceCities';
 
-const CityPage = () => {
+const CityPage = ({ allWeather, onSetAllWeather }) => {
     const { city, countryCode, chartData, forecastItemList } = useCityPage();
 
     const cities = useMemo(() => ([{ city,  countryCode }]), [city,  countryCode]);
-    const { allWeather } = useCityList(cities);
+    useCityList(cities, onSetAllWeather);
 
     const weather = allWeather[getCityCode(city, countryCode)],
         country = countryCode && getCountryNameByCountryCode(countryCode),
@@ -63,6 +64,11 @@ const CityPage = () => {
             </Grid>
         </AppFrame>
     );
+}
+
+CityPage.propTypes = {
+    allWeather: PropTypes.func,
+    onSetAllWeather: PropTypes.func,
 }
 
 export default CityPage;
