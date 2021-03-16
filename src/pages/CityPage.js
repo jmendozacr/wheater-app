@@ -8,15 +8,20 @@ import ForecastChart from './../components/ForecastChart';
 import ForeCast from './../components/Forecast';
 import AppFrame from './../components/AppFrame';
 import useCityPage from './../hooks/useCityPage';
+import useCityList from '../hooks/useCityList';
+import { getCityCode } from '../utils/utils';
+import { getCountryNameByCountryCode } from '../utils/serviceCities';
 
 const CityPage = () => {
-    const { city, chartData, forecastItemList } = useCityPage()
+    const { city, countryCode, chartData, forecastItemList } = useCityPage()
+    const { allWeather } = useCityList([{ city,  countryCode }]);
 
-    const country = "Costa Rica",
-       state   = "snow",
-       temperature = 23,
-       humidity = 80,
-       wind    = 20;
+    const weather = allWeather[getCityCode(city, countryCode)],
+        country = countryCode && getCountryNameByCountryCode(countryCode),
+        state   = weather && weather.state,
+        temperature = weather && weather.temperature,
+        humidity = weather && weather.humidity,
+        wind    = weather && weather.wind;
 
     return (
         <AppFrame>
@@ -34,7 +39,9 @@ const CityPage = () => {
                     xs={12}
                     justify="center">
                     <Weather state={state} temperature={temperature} />
-                    <WeatherDetail humidity={humidity} wind={wind} />
+                    {
+                        humidity && wind && <WeatherDetail humidity={humidity} wind={wind} />
+                    }
                 </Grid>
                 <Grid item>
                     {
